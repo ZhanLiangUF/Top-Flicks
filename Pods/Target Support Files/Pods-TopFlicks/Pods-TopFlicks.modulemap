@@ -1,0 +1,6 @@
+framework module Pods_TopFlicks {
+  umbrella header "Pods-TopFlicks-umbrella.h"
+
+  export *
+  module * { export * }
+}
