@@ -21,7 +21,7 @@
 		7068075443AC3F09976757BA /* Pods-TopFlicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopFlicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopFlicks/Pods-TopFlicks.release.xcconfig"; sourceTree = "<group>"; };
 		96228C641EFB59F9DCEA2A48 /* Pods-TopFlicks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopFlicks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopFlicks/Pods-TopFlicks.debug.xcconfig"; sourceTree = "<group>"; };
 		B55DEAB51C42EDEC0096A177 /* TopFlicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopFlicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B55DEAB81C42EDEC0096A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B55DEAB81C42EDEC0096A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TopFlicks/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		B55DEABD1C42EDEC0096A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B55DEABF1C42EDEC0096A177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B55DEAC21C42EDEC0096A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
