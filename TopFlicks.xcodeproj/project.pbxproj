@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E388AC8CBC2703EDBCF85F0 /* Pods_TopFlicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FAD775D2BAAA2534E65207 /* Pods_TopFlicks.framework */; };
+		B55BC44C1C4DE70600255541 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BC44B1C4DE70500255541 /* DetailViewController.swift */; };
 		B55DEAB91C42EDEC0096A177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55DEAB81C42EDEC0096A177 /* AppDelegate.swift */; };
 		B55DEABE1C42EDEC0096A177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55DEABC1C42EDEC0096A177 /* Main.storyboard */; };
 		B55DEAC01C42EDEC0096A177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55DEABF1C42EDEC0096A177 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		49FAD775D2BAAA2534E65207 /* Pods_TopFlicks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopFlicks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7068075443AC3F09976757BA /* Pods-TopFlicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopFlicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopFlicks/Pods-TopFlicks.release.xcconfig"; sourceTree = "<group>"; };
 		96228C641EFB59F9DCEA2A48 /* Pods-TopFlicks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopFlicks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopFlicks/Pods-TopFlicks.debug.xcconfig"; sourceTree = "<group>"; };
+		B55BC44B1C4DE70500255541 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B55DEAB51C42EDEC0096A177 /* TopFlicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopFlicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55DEAB81C42EDEC0096A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TopFlicks/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		B55DEABD1C42EDEC0096A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				B55DEACA1C42F0BC0096A177 /* TopFlicksViewController.swift */,
+				B55BC44B1C4DE70500255541 /* DetailViewController.swift */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				B55DEACB1C42F0BC0096A177 /* TopFlicksViewController.swift in Sources */,
 				B55DEAB91C42EDEC0096A177 /* AppDelegate.swift in Sources */,
 				B55DEACE1C4303120096A177 /* MovieCell.swift in Sources */,
+				B55BC44C1C4DE70600255541 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -120,6 +120,48 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       
+        let cell = sender as! UITableViewCell
+        
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! DetailViewController
+        
+        detailViewController.movie = movie
+        
+        
+        
+        
+        
+        
+        print("prepare for segue called")
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+  
+    
+    
+    
+    
+    
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if let movies = movies {
@@ -127,7 +169,6 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             return 0
         }
-        
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath)as! MovieCell
@@ -136,19 +177,19 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
+        if let posterPath = movie["poster_path"] as? String {
         
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
         
         let imageUrl = NSURL(string: baseUrl + posterPath)
         
-        
-        
+       cell.posterView.setImageWithURL(imageUrl!)
+        }
         cell.titleLabel.text = title
         
         cell.overviewLabel.text = overview
-        cell.posterView.setImageWithURL(imageUrl!)
+       
         print("row \(indexPath.row)")
         
         
@@ -162,15 +203,11 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
     
 }
     
-    /*
+
     // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
+    // In a storyboard-based application, you will       often want to do a little preparation before navigation
+
+
 
 
 
