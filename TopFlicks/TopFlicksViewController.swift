@@ -11,20 +11,19 @@ import AFNetworking
 import MBProgressHUD
 
 
-class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating{
     
    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [NSDictionary]?
+    var filteredData:[NSDictionary]!
+    var endpoint: String!
     
-
-    
- 
-    
-    
-    
-    
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +38,21 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.dataSource = self
         tableView.delegate = self
         
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        
+        // If we are using this same view controller to present the results
+        // dimming it out wouldn't make sense.  Should set probably only set
+        // this to yes if using another controller to display the search results.
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
         
         
         
@@ -47,7 +61,7 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
 
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -72,6 +86,7 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
                         data, options:[]) as? NSDictionary {
                             print("response: \(responseDictionary)")
                             self.movies = responseDictionary["results"] as! [NSDictionary]
+                            self.filteredData = self.movies
                             self.tableView.reloadData()
        
                             
@@ -164,28 +179,51 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        if let movies = movies {
+        
+    
+        
+        
+        if let movies = filteredData {
             return movies.count
         } else {
             return 0
         }
     }
+   
+    
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath)as! MovieCell
         
         
-        let movie = movies![indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        if let posterPath = movie["poster_path"] as? String {
+        
+let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath)as! MovieCell
+     
+
+        
+
+        
+        
+let movie = filteredData![indexPath.row]
+        
+        
+        
+        
+        
+
+let title = movie["title"] as! String
+let overview = movie["overview"] as! String
+if let posterPath = movie["poster_path"] as? String {
         
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
         
-        let imageUrl = NSURL(string: baseUrl + posterPath)
+            let imageUrl = NSURL(string: baseUrl + posterPath)
         
-       cell.posterView.setImageWithURL(imageUrl!)
-        }
+                cell.posterView.setImageWithURL(imageUrl!)
+}
+        
+
         cell.titleLabel.text = title
         
         cell.overviewLabel.text = overview
@@ -201,8 +239,44 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-}
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filteredData = searchText.isEmpty ? movies : movies!.filter({(movie: NSDictionary) -> Bool in
+                let title = movie["title"]as! String
+                
+                
+                return title.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+            })
+            
+            tableView.reloadData()
+        }
+    }
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // MARK: - Navigation
     // In a storyboard-based application, you will       often want to do a little preparation before navigation
