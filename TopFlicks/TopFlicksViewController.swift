@@ -28,6 +28,24 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        self.navigationItem.title = "Movies"
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.setBackgroundImage(UIImage(named: "movie_icon"), forBarMetrics: .Default)
+            navigationBar.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 0.8)
+            
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+            shadow.shadowOffset = CGSizeMake(2, 2);
+            shadow.shadowBlurRadius = 4;
+            navigationBar.titleTextAttributes = [
+                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+                NSForegroundColorAttributeName : UIColor(red: 0.15, green: 0.15, blue: 0.8, alpha: 0.8),
+                NSShadowAttributeName : shadow
+            ]
+        }
+        
+        
+        
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -189,7 +207,7 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
             return 0
         }
     }
-   
+    
     
     
     
@@ -198,8 +216,13 @@ class TopFlicksViewController: UIViewController, UITableViewDataSource, UITableV
         
         
 let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath)as! MovieCell
-     
 
+// No color when the user selects cell
+cell.selectionStyle = .Gray
+// Use a red color when the user selects the cell
+let backgroundView = UIView()
+backgroundView.backgroundColor = UIColor.redColor()
+cell.selectedBackgroundView = backgroundView
         
 
         
@@ -221,6 +244,8 @@ if let posterPath = movie["poster_path"] as? String {
             let imageUrl = NSURL(string: baseUrl + posterPath)
         
                 cell.posterView.setImageWithURL(imageUrl!)
+    
+    
 }
         
 
